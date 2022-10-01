@@ -1,0 +1,11 @@
+:root {
+    --mainThemeColor: #343F56;
+    --secondaryThemeColor: #387C6D;
+    --thirdThemeColor: #E9896A;
+    --fontcolor: #F8F5F1;
+}
+
+.hero {
+    background-color: var(--mainThemeColor);
+    color: var(--fontcolor);
+}

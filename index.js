@@ -13,53 +13,55 @@ const init = () => { managerQuestionsFunc() }
 
 const managerQuestionsFunc = () => {
     inquirer.prompt(managerQuestions)
-        .then((answers) => {
-            answers = new Manager(
+        .then(answers => {
+            const manager = new Manager(
                 answers.managerName,
-                answers.managerName,
-                answers.managerName,
-                answers.managerName)
-            employeesArr.push(answers);
+                answers.managerId,
+                answers.managerEmail,
+                answers.managerOfficeNumber)
+            employeesArr.push(manager);
             return addToTeamPrompt();
         });
 };
 
-const engineerQuestionsFunc = () => {
-    inquirer.prompt(engineerQuestions)
-        .then((answers) => {
-            answers = new Engineer(
-                answers.engineerName,
-                answers.engineerid,
-                answers.engineerEmail,
-                answers.engineerGithub)
-            employeesArr.push(answers);
-            return addToTeamPrompt();
-        });
-};
+// const engineerQuestionsFunc = () => {
+//     inquirer.prompt(engineerQuestions)
+//         .then((answers) => {
+//             answers = new Engineer(
+//                 answers.engineerName,
+//                 answers.engineerid,
+//                 answers.engineerEmail,
+//                 answers.engineerGithub)
+//             employeesArr.push(engineer);
+//             return addToTeamPrompt();
+//         });
+// };
 
-const internQuestionsFunc = () => {
-    inquirer.prompt(internQuestions)
-        .then((answers) => {
-            answers = new Intern(
-                answers.internName,
-                answers.internId,
-                answers.internEmail,
-                answers.internSchool)
-            employeesArr.push(answers);
-            return addToTeamPrompt();
-        });
-};
+// const internQuestionsFunc = () => {
+//     inquirer.prompt(internQuestions)
+//         .then((answers) => {
+//             answers = new Intern(
+//                 answers.internName,
+//                 answers.internId,
+//                 answers.internEmail,
+//                 answers.internSchool)
+//             employeesArr.push(intern);
+//             return addToTeamPrompt();
+//         });
+// };
 
 const addToTeamPrompt = () => {
     inquirer.prompt(employeePrompt)
         .then(answer => {
             if (answer.employeeType === "Engineer") {
-                engineerQuestionsFunc();
+                // engineerQuestionsFunc();
+                console.log("You added an Engineer!")
             } else if (answer.employeeType === "Intern") {
-                internQuestionsFunc();
+                // internQuestionsFunc();
+                console.log("You added an intern!")
             } else {
                 console.log(employeesArr);
-                // generateHTML();
+                generateHTML();
             };
         });
 };
@@ -77,14 +79,14 @@ const employeePrompt = [
     },
 ];
 
-// const generateHTML = () => {
-//     let htmlFile = htmlTemplate(employeesArr)
-//                 fs.writeFile("index.html", htmlFile, (err) =>
-//                     err ? console.error(err) : console.log("Congrats! Your team")
-//                 )
-//                 .catch((err) => {
-//                 console.error(err)
-//             });
-// };
+const generateHTML = (answers) => {
+    let htmlFile = htmlTemplate(answers)
+                fs.writeFile("index.html", htmlFile, (err) =>
+                    err ? console.error(err) : console.log("Congrats! Your team")
+                )
+                .catch((err) => {
+                console.error(err)
+            });
+};
 
 init()
