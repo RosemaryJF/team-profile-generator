@@ -1,4 +1,4 @@
-const Employee = require('../lib/employee')
+const Employee = require('../lib/Employee.js')
 
 describe('Employee class', () => {
     it('Creates a new employee', () => {
@@ -16,5 +16,15 @@ describe('Employee class', () => {
         expect(employee.getID()).toEqual(employee.id);
         expect(employee.getEmail()).toEqual(employee.email);
         expect(employee.getRole()).toEqual('Employee');
-    })
+    });
+
+    // it('Should throw an error if not provided an email in the correct format')
+    //     const err = new Error(
+    //         'Information input in an invalid format'
+    //     );
+    //     const cb = () => {
+    //         const employee = new Employee();
+    //         employee.getEmail();
+    //     }
+    //     expect(cb).toThrowError(err);
 })
