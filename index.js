@@ -7,9 +7,9 @@ const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 
-const {managerQuestions} = require("./lib/Manager");
-const {engineerQuestions} = require("./lib/Engineer");
-const {internQuestions} = require("./lib/Intern");
+const managerQuestions = require("./lib/managerQuestions");
+const engineerQuestions = require("./lib/engineerQuestions");
+const internQuestions = require("./lib/internQuestions");
 
 const employeesArr = [];
 
