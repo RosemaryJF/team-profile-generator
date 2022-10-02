@@ -1,37 +1,49 @@
-
-const generateManagerCard = (Manager) => {
-    return `
+// const { managerQuestions } = require("../lib/manager");
+const generateRoster = employees => {
+    const generateManagerCard = (manager) => {
+        return `
     <div class="tile is-child is-4 has-text-centered employeeCard">
-        <h2>${Manager.name}</h2>
-        <h3>${Manager}</h3>
-        <p>${Manager.id}</p>
-        <p>${Manager.email}</p>
-        <p>${Manager.officeNumber}</p>
+        <h2>${manager.getName()}</h2>
+        <h3>${manager.getRole()}</h3>
+        <p>${manager.getID()}</p>
+        <p>${manager.getEmail()}</p>
+        <p>${manager.getOfficeNumber()}</p>
     </div>
     `
-}
+    }
 
-const generateEngineerCard = engineer => {
-    return `
-    <div class="tile is-child is-4 has-text-centered">
-        Some text
-    </div>
-    `
-}
+    const generateEngineerCard = engineer => {
+        return `
+        <div class="tile is-child is-4 has-text-centered">
+            Some text
+        </div>
+        `
+    }
 
-const generateInternCard = intern => {
-    return `
-    <div class="tile is-child is-4 has-text-centered">
-        Some text
-    </div>
-    `
-}
+    // const generateInternCard = intern => {
+    //     return `
+    //     <div class="tile is-child is-4 has-text-centered">
+    //         Some text
+    //     </div>
+    //     `
+    // }
 
-// const html = [];
+    const html = [];
 
-// html.push
+    html.push(employees
+        .filter(employee => employee.getRole() === "Manager")
+        .map(manager => generateManagerCard(manager))
+    );
+    html.push(employees
+        .filter(employee => employee.getRole() === "Engineer")
+        .map(engineer => generateEngineerCard(engineer))
+        .join("")
+    );
 
-const generateBaseHTML= file => {
+    return html.join("");
+};
+
+const generateBaseHTML = file => {
     return `
 <!DOCTYPE html>
 <html lang="en">
@@ -54,7 +66,7 @@ const generateBaseHTML= file => {
 
     <div class="tile is-ancestor">
         <div class="tile is-parent is-12">
-        ${generateManagerCard(file)}
+        ${generateRoster(file)}
         </div>
     </div>
 </body>
