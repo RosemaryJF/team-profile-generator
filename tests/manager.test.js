@@ -8,7 +8,7 @@ describe('Manager class', () => {
         expect(manager.name).toEqual('Rosie Forster');
         expect(manager.id).toEqual(5151);
         expect(manager.email).toEqual('rosemaryjforster@gmail.com');
-        expect(manager.officeNumber).toBe(expect.any(String));
+        expect(manager.officeNumber).toEqual(expect.any(String));
     });
 
     it('Checks all methods on the Manager Class', () => {

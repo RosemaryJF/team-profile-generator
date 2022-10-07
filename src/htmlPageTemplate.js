@@ -15,7 +15,7 @@ const generateRoster = employees => {
     const generateEngineerCard = engineer => {
         return `
         <div class="tile is-child is-4 has-text-centered">
-            Some text
+            ${engineer.getName()}
         </div>
         `
     }
@@ -31,11 +31,12 @@ const generateRoster = employees => {
     const html = [];
 
     html.push(employees
-        .filter(employee => employee.getRole() === "Manager")
+        .filter(employee => employee.getRole() === 'Manager')
         .map(manager => generateManagerCard(manager))
+        .join("")
     );
     html.push(employees
-        .filter(employee => employee.getRole() === "Engineer")
+        .filter(employee => employee.getRole() === 'Engineer')
         .map(engineer => generateEngineerCard(engineer))
         .join("")
     );
@@ -43,7 +44,7 @@ const generateRoster = employees => {
     return html.join("");
 };
 
-const generateBaseHTML = file => {
+const generateBaseHTML = employees => {
     return `
 <!DOCTYPE html>
 <html lang="en">
@@ -66,7 +67,7 @@ const generateBaseHTML = file => {
 
     <div class="tile is-ancestor">
         <div class="tile is-parent is-12">
-        ${generateRoster(file)}
+        ${generateRoster(employees)}
         </div>
     </div>
 </body>

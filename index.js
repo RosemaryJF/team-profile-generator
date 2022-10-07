@@ -1,7 +1,7 @@
 const inquirer = require("inquirer");
 // const jest = require("jest");
 const fs = require("fs");
-const htmlTemplate = require("./src/html-page-template")
+const htmlTemplate = require("./src/htmlPageTemplate")
 
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
@@ -17,7 +17,7 @@ const init = () => { managerQuestionsFunc() }
 
 const managerQuestionsFunc = () => {
     inquirer.prompt(managerQuestions)
-        .then(answers => {
+        .then((answers) => {
             const manager = new Manager(
                 answers.managerName,
                 answers.managerId,
@@ -31,7 +31,7 @@ const managerQuestionsFunc = () => {
 const engineerQuestionsFunc = () => {
     inquirer.prompt(engineerQuestions)
         .then((answers) => {
-            answers = new Engineer(
+            const engineer = new Engineer(
                 answers.engineerName,
                 answers.engineerid,
                 answers.engineerEmail,

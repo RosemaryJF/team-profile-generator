@@ -8,7 +8,7 @@ describe('Intern class', () => {
         expect(intern.name).toEqual('Rosie Forster');
         expect(intern.id).toEqual(5151);
         expect(intern.email).toEqual('rosemaryjforster@gmail.com');
-        expect(intern.school).toBe(expect.any(String));
+        expect(intern.school).toEqual(expect.any(String));
     });
 
     it('Checks all methods on the intern Class', () => {

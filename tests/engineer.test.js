@@ -1,4 +1,3 @@
-// const Employee = require('../lib/Employee');
 const Engineer = require('../lib/Engineer');
 
 describe('Engineer class', () => {
@@ -8,11 +7,11 @@ describe('Engineer class', () => {
         expect(engineer.name).toEqual('Rosie Forster');
         expect(engineer.id).toEqual(5151);
         expect(engineer.email).toEqual('rosemaryjforster@gmail.com');
-        expect(engineer.github).toBe(expect.any(String));
+        expect(engineer.github).toEqual(expect.any(String));
     });
 
-    it('Checks all methods on the Employee Class', () => {
-        const engineer = new Employee('Rosie Forster', 5151, 'rosemaryjforster@gmail.com', 'RosemaryJF');
+    it('Checks all methods on the Engineer Class', () => {
+        const engineer = new Engineer('Rosie Forster', 5151, 'rosemaryjforster@gmail.com', 'RosemaryJF');
 
         expect(engineer.getName()).toEqual(engineer.name);
         expect(engineer.getID()).toEqual(engineer.id);
