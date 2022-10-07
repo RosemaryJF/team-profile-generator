@@ -1,6 +1,5 @@
-// const generateEmployeeCards = employees => {
-    const generateManagerCard = (Manager) => {
-        return `
+const generateManagerCard = (Manager) => {
+    return `
     <div class="tile is-child is-4 has-text-centered employeeCard">
         <h2>${Manager.getName()}</h2>
         <h3>${Manager.getRole()}</h3>
@@ -9,43 +8,54 @@
         <p>${Manager.getOfficeNumber()}</p>
     </div>
     `
-    }
+}
 
-    const generateEngineerCard = engineer => {
-        return `
+const generateEngineerCard = engineer => {
+    return `
         <div class="tile is-child is-4 has-text-centered">
             ${engineer.getName()}
         </div>
         `
-    }
+}
 
-    const generateInternCard = intern => {
-        return `
+const generateInternCard = intern => {
+    return `
         <div class="tile is-child is-4 has-text-centered">
             ${intern.getName()}
         </div>
         `
-    }
+}
 
-    const employeeCards = employeesArr => {
-        let baseHTML = ''
-        for (let i = 0; i < employeesArr.length; i++) {
-            if (employeesArr[i].getRole() === 'Manager') {
-                baseHTML = baseHTML + generateManagerCard(employeesArr[i])
-                console.log('Manager Card is created')
-            }
-            if (employeesArr[i].getRole() === 'Engineer') {
-                baseHTML = baseHTML + generateEngineerCard(employeesArr[i])
-                console.log('Engineer Card is created')
-            }
-            if (employeesArr[i].getRole() === 'Intern') {
-                baseHTML = baseHTML + generateInternCard(employeesArr[i])
-                console.log('Intern Card is created')
-            } return baseHTML
+generateEmployeeCards = (employeesArr) => {
+   const employeeCardArr = []
+    for (let i = 0; i < employeesArr.length; i++) {
+        const employee = employeesArr[i];
+        const role = employee.getRole()
+        if (role === 'Manager') {
+            const managerCard = generateManagerCard(employee);
+
+            employeeCardArr.push(managerCard);
+        }
+        if (role === 'Engineer') {
+            const engineerCard = generateEngineerCard(employee);
+
+            employeeCardArr.push(engineerCard);
+        }
+        if (role === 'Intern') {
+            const internCard = generateInternCard(employee);
+
+            employeeCardArr.push(internCard);
         }
     }
-        
-const generateBaseHTML = data => {
+
+    employeeCardArr.join('')
+    
+    const generateTeam = generateTeamPage(employeeCardArr); 
+    return generateTeam;
+}
+
+
+const generateBaseHTML = employeeCardArr => {
     return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -67,7 +77,7 @@ const generateBaseHTML = data => {
 
     <div class="tile is-ancestor">
         <div class="tile is-parent is-12">
-        ${employeeCards(data)}
+        ${employeeCardArr}
         </div>
     </div>
 </body>
