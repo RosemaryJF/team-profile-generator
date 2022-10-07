@@ -41,28 +41,28 @@ const engineerQuestionsFunc = () => {
         });
 };
 
-// const internQuestionsFunc = () => {
-//     inquirer.prompt(internQuestions)
-//         .then((answers) => {
-//             answers = new Intern(
-//                 answers.internName,
-//                 answers.internId,
-//                 answers.internEmail,
-//                 answers.internSchool)
-//             employeesArr.push(intern);
-//             return addToTeamPrompt();
-//         });
-// };
+const internQuestionsFunc = () => {
+    inquirer.prompt(internQuestions)
+        .then((answers) => {
+            const intern = new Intern(
+                answers.internName,
+                answers.internId,
+                answers.internEmail,
+                answers.internSchool)
+            employeesArr.push(intern);
+            return addToTeamPrompt();
+        });
+};
 
 const addToTeamPrompt = () => {
     inquirer.prompt(employeePrompt)
         .then(answer => {
             if (answer.employeeType === "Engineer") {
+                console.log("You added an Engineer!")
                 engineerQuestionsFunc();
-                // console.log("You added an Engineer!")
             } else if (answer.employeeType === "Intern") {
-                // internQuestionsFunc();
                 console.log("You added an intern!")
+                internQuestionsFunc();
             } else {
                 console.log(employeesArr);
                 generateHTML();
@@ -76,21 +76,19 @@ const employeePrompt = [
         message: "Which type of team member would you like to add?",
         name: "employeeType",
         choices: [
-            {name: 'Engineer'},
-            {name: 'Intern'}, 
-            {name: "I don't want to add any more team members"}
+            { name: 'Engineer' },
+            { name: 'Intern' },
+            { name: "I don't want to add any more team members" }
         ],
     },
 ];
 
 const generateHTML = (employeesArr) => {
     let htmlFile = htmlTemplate(employeesArr)
-                fs.writeFile("index.html", htmlFile, "UTF-8", (err) =>
-                    err ? console.error(err) : console.log("Congrats! Your team HTML page has been created!")
-                )
-                .catch((err) => {
-                console.error(err)
-            });
+    fs.writeFile("./dist/index.html", htmlFile, "UTF-8", (err) =>
+        err ? console.error(err) : console.log("Congrats! Your team HTML page has been created!")
+    )
 };
 
 init()
+module.exports = employeesArr

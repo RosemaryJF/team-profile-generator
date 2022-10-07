@@ -1,13 +1,12 @@
-// const { managerQuestions } = require("../lib/manager");
-const generateRoster = employees => {
-    const generateManagerCard = (manager) => {
+const generateEmployeeCards = employees => {
+    const generateManagerCard = (Manager) => {
         return `
     <div class="tile is-child is-4 has-text-centered employeeCard">
-        <h2>${manager.getName()}</h2>
-        <h3>${manager.getRole()}</h3>
-        <p>${manager.getID()}</p>
-        <p>${manager.getEmail()}</p>
-        <p>${manager.getOfficeNumber()}</p>
+        <h2>${Manager.getName()}</h2>
+        <h3>${Manager.getRole()}</h3>
+        <p>${Manager.getID()}</p>
+        <p>${Manager.getEmail()}</p>
+        <p>${Manager.getOfficeNumber()}</p>
     </div>
     `
     }
@@ -20,29 +19,47 @@ const generateRoster = employees => {
         `
     }
 
-    // const generateInternCard = intern => {
-    //     return `
-    //     <div class="tile is-child is-4 has-text-centered">
-    //         Some text
-    //     </div>
-    //     `
-    // }
+    const generateInternCard = intern => {
+        return `
+        <div class="tile is-child is-4 has-text-centered">
+            ${intern.getName()}
+        </div>
+        `
+    }
 
-    const html = [];
+    const employeeCards = employeesArr => {
+        // let baseHTML = ''
+        for (let i = 0; i = employeesArr; i++) {
+            if (employeesArr[i].getRole() === 'Manager') {
+                baseHTML = baseHTML + generateManagerCard(employeesArr[i])
+            }
+            if (employeesArr[i].getRole() === 'Engineer') {
+                baseHTML = baseHTML + generateEngineerCard(employeesArr[i])
+            }
+            if (employeesArr[i].getRole() === 'Intern') {
+                baseHTML = baseHTML + generateInternCard(employeesArr[i])
+            }
+        } return employeeCards
+    } 
 
-    html.push(employees
-        .filter(employee => employee.getRole() === 'Manager')
-        .map(manager => generateManagerCard(manager))
-        .join("")
-    );
-    html.push(employees
-        .filter(employee => employee.getRole() === 'Engineer')
-        .map(engineer => generateEngineerCard(engineer))
-        .join("")
-    );
+    //     const html = [];
 
-    return html.join("");
-};
+    //     html.push(Employees
+    //         .filter(Employee => (Employee.getRole() === 'Manager'))
+    //         .map(manager => generateManagerCard(manager))
+    //     );
+
+    //     html.push(Employees
+    //         .filter(employee => employee.getRole() === 'Engineer')
+    //         .map(engineer => generateEngineerCard(engineer))
+    //         .join("")
+    //     );
+
+    //     return html.join("");
+    // };
+}
+
+
 
 const generateBaseHTML = employees => {
     return `
@@ -67,7 +84,7 @@ const generateBaseHTML = employees => {
 
     <div class="tile is-ancestor">
         <div class="tile is-parent is-12">
-        ${generateRoster(employees)}
+        ${generateEmployeeCards(employees)}
         </div>
     </div>
 </body>
