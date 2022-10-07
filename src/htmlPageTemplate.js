@@ -1,4 +1,4 @@
-const generateEmployeeCards = employees => {
+// const generateEmployeeCards = employees => {
     const generateManagerCard = (Manager) => {
         return `
     <div class="tile is-child is-4 has-text-centered employeeCard">
@@ -28,42 +28,25 @@ const generateEmployeeCards = employees => {
     }
 
     const employeeCards = employeesArr => {
-        // let baseHTML = ''
-        for (let i = 0; i = employeesArr; i++) {
+        let baseHTML = ''
+        for (let i = 0; i < employeesArr.length; i++) {
             if (employeesArr[i].getRole() === 'Manager') {
                 baseHTML = baseHTML + generateManagerCard(employeesArr[i])
+                console.log('Manager Card is created')
             }
             if (employeesArr[i].getRole() === 'Engineer') {
                 baseHTML = baseHTML + generateEngineerCard(employeesArr[i])
+                console.log('Engineer Card is created')
             }
             if (employeesArr[i].getRole() === 'Intern') {
                 baseHTML = baseHTML + generateInternCard(employeesArr[i])
-            }
-        } return employeeCards
-    } 
-
-    //     const html = [];
-
-    //     html.push(Employees
-    //         .filter(Employee => (Employee.getRole() === 'Manager'))
-    //         .map(manager => generateManagerCard(manager))
-    //     );
-
-    //     html.push(Employees
-    //         .filter(employee => employee.getRole() === 'Engineer')
-    //         .map(engineer => generateEngineerCard(engineer))
-    //         .join("")
-    //     );
-
-    //     return html.join("");
-    // };
-}
-
-
-
-const generateBaseHTML = employees => {
-    return `
-<!DOCTYPE html>
+                console.log('Intern Card is created')
+            } return baseHTML
+        }
+    }
+        
+const generateBaseHTML = data => {
+    return `<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -84,7 +67,7 @@ const generateBaseHTML = employees => {
 
     <div class="tile is-ancestor">
         <div class="tile is-parent is-12">
-        ${generateEmployeeCards(employees)}
+        ${employeeCards(data)}
         </div>
     </div>
 </body>
