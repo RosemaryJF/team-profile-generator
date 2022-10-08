@@ -1,7 +1,7 @@
-// const Employee = require("../lib/Employee")
-
+// Variable function for generating all employee cards
 const generateEmployeeCards = employees => {
 
+    // Variable function to generate the Manager card
     const generateManagerCard = (managerAnswers) => {
         return `
             <div class="tile is-child is-4 has-text-centered employeeCard">
@@ -14,6 +14,7 @@ const generateEmployeeCards = employees => {
     `
     }
 
+    // Variable function to generate an Engineer card
     const generateEngineerCard = engineerAnswers => {
         return `
             <div class="tile is-child is-4 has-text-centered">
@@ -26,6 +27,7 @@ const generateEmployeeCards = employees => {
     `
     }
 
+    // Variable function to generate an Intern card
     const generateInternCard = internAnswers => {
         return `
             <div class="tile is-child is-4 has-text-centered">
@@ -38,28 +40,35 @@ const generateEmployeeCards = employees => {
     `
     }
 
+    // Empty variable for all cards html
     const cardHtml = [];
 
+    // Manager card being pushed to cardHTML
     cardHtml.push(employees
         .filter(employee => employee.getRole() === "Manager")
         .map(manager => generateManagerCard(manager))
     );
 
+    // Engineer card being pushed to cardHTML
     cardHtml.push(employees
         .filter(employee => employee.getRole() === "Engineer")
         .map(engineer => generateEngineerCard(engineer))
         .join("")
     );
 
+    // Intern card being pushed to cardHTML
     cardHtml.push(employees
         .filter(employee => employee.getRole() === "Intern")
         .map(intern => generateInternCard(intern))
         .join("")
     );
 
+    // Joining all cardHTML
     return cardHtml.join("")
 }
 
+// Variable containing base HTML template 
+// with the generateEmployeeCards function being called within
 const generateBaseHTML = employees => {
     return `<!DOCTYPE html>
 <html lang="en">

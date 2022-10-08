@@ -1,15 +1,18 @@
+/* root colour scheme */
 :root {
     --mainThemeColor: #343F56;
     --secondaryThemeColor: #387C6D;
     --fontcolor: #F8F5F1;
 }
 
+/* Hero styling */
 .hero {
     background-color: var(--mainThemeColor);
     color: var(--fontcolor);
     margin-bottom: 5%;
 }
 
+/* Employee cards styling */
 .tile .is-child {
     margin-left: 8%!important;
     margin-right: -10%!important;
@@ -17,8 +20,7 @@
     align-items: center;
 }
 
-
-
+/* H2 & H3 styling */
 h2,
 h3 {
     padding-top: 2.5%;
@@ -31,10 +33,12 @@ h3 {
     width: 20rem;
 }
 
+/* Icon styling */
 i {
     padding-right: 10px;
 }
 
+/* Paragraph styling */
 p {
     padding: 2.5%;
     background-color: var(--fontcolor);

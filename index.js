@@ -1,20 +1,25 @@
 const inquirer = require("inquirer");
-// const jest = require("jest");
 const fs = require("fs");
 const htmlTemplate = require("./src/htmlPageTemplate")
 
+// Variables requiring all library js files
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 
+// Variables containing console questions
 const managerQuestions = require("./lib/managerQuestions");
 const engineerQuestions = require("./lib/engineerQuestions");
 const internQuestions = require("./lib/internQuestions");
 
+// Empty array which employees are pushed to as they are created
 const employeesArr = [];
 
+// Function to initiate console application
 const init = () => { managerQuestionsFunc() }
 
+// Function to run manager questions
+// and push answers to the employees array
 const managerQuestionsFunc = () => {
     inquirer.prompt(managerQuestions)
         .then((answers) => {
@@ -29,6 +34,8 @@ const managerQuestionsFunc = () => {
         });
 };
 
+// Function to run engineer questions
+// and push answers to the employees array
 const engineerQuestionsFunc = () => {
     inquirer.prompt(engineerQuestions)
         .then((answers) => {
@@ -43,6 +50,8 @@ const engineerQuestionsFunc = () => {
         });
 };
 
+// Function to run intern questions
+// and push answers to the employees array
 const internQuestionsFunc = () => {
     inquirer.prompt(internQuestions)
         .then((answers) => {
@@ -57,6 +66,8 @@ const internQuestionsFunc = () => {
         });
 };
 
+// Inquirer prompt to run below employee prompt
+// user choice will decide what function is run
 const addToTeamPrompt = () => {
     inquirer.prompt(employeePrompt)
         .then(answer => {
@@ -65,12 +76,13 @@ const addToTeamPrompt = () => {
             } else if (answer.employeeType === "Intern") {
                 internQuestionsFunc();
             } else {
-                console.log(employeesArr);
                 generateHTML(employeesArr);
             };
         });
 };
 
+// Varialble containing the employee prompt
+// from which the user selects if they want to add another team member of not
 const employeePrompt = [
     {
         type: 'list',
@@ -84,6 +96,8 @@ const employeePrompt = [
     },
 ];
 
+// Variable function to write the index.html 
+// And throw error if unable to
 const generateHTML = (employees) => {
     let htmlFile = htmlTemplate(employees)
     fs.writeFile("./dist/index.html", htmlFile, "UTF-8", (err) =>
@@ -92,5 +106,3 @@ const generateHTML = (employees) => {
 };
 
 init()
-
-module.exports = employeesArr
