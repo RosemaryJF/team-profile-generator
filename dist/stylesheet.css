@@ -8,4 +8,24 @@
 .hero {
     background-color: var(--mainThemeColor);
     color: var(--fontcolor);
+    margin-bottom: 10%;
+}
+
+.is-child {
+    align-items: center;
+    justify-content: center;
+}
+
+h2,
+h3,
+i {
+    padding: 5%;
+    background-color: var(--secondaryThemeColor);
+    color: var(--fontcolor);
+    font-weight: bold;
+}
+
+p {
+    padding: 2.5%;
+    background-color: var(--fontcolor);
 }

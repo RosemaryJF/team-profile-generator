@@ -4,52 +4,60 @@ const generateEmployeeCards = employees => {
 
     const generateManagerCard = (managerAnswers) => {
         return `
-    <div class="tile is-child is-4 has-text-centered employeeCard">
-        <h2>${managerAnswers.getName()}</h2>
-        <h3>${managerAnswers.getRole()}</h3>
-        <p>${managerAnswers.getID()}</p>
-        <p>${managerAnswers.getEmail()}</p>
-        <p>${managerAnswers.getOfficeNumber()}</p>
-    </div>
+            <div class="tile is-child is-4 has-text-centered employeeCard">
+                <h2>${managerAnswers.getName()}</h2>
+                <i class="fas fa-tasks" style="color: #ffffff;"></i><h3>${managerAnswers.getRole()}</h3>
+                <p>ID: ${managerAnswers.getID()}</p>
+                <p>Email: ${managerAnswers.getEmail()}</p>
+                <p>Office Number: ${managerAnswers.getOfficeNumber()}</p>
+            </div>
     `
     }
 
     const generateEngineerCard = engineerAnswers => {
         return `
-        <div class="tile is-child is-4 has-text-centered">
-           <h2>${engineerAnswers.getName()}</h2>
-        </div>
-        `
+            <div class="tile is-child is-4 has-text-centered">
+                <h2>${engineerAnswers.getName()}</h2>
+                <i class="fas fa-user-cog" style="color: #ffffff;"></i><h3>${engineerAnswers.getRole()}</h3>
+                <p>ID: ${engineerAnswers.getID()}</p>
+                <p>Email: ${engineerAnswers.getEmail()}</p>
+                <p>GitHub: <a href="https://www.github.com/${engineerAnswers.getGitHub()}" target="_blank">${engineerAnswers.getGitHub()}</a></p>
+            </div>
+    `
     }
 
     const generateInternCard = internAnswers => {
         return `
-        <div class="tile is-child is-4 has-text-centered">
-        <h2>${internAnswers.getName()}</h2>
-        </div>
-        `
+            <div class="tile is-child is-4 has-text-centered">
+            <h2>${internAnswers.getName()}</h2>
+            <i class="fas fa-user-graduate" style="color: #ffffff;"></i>${internAnswers.getRole()}</h3>
+            <p>ID: ${internAnswers.getID()}</p>
+            <p>Email: ${internAnswers.getEmail()}</p>
+            <p>School: ${internAnswers.getSchool()}</p>
+            </div>
+    `
     }
 
-    const html = [];
+    const cardHtml = [];
 
-    html.push(employees
+    cardHtml.push(employees
         .filter(employee => employee.getRole() === "Manager")
         .map(manager => generateManagerCard(manager))
     );
 
-    html.push(employees
+    cardHtml.push(employees
         .filter(employee => employee.getRole() === "Engineer")
         .map(engineer => generateEngineerCard(engineer))
         .join("")
     );
 
-    html.push(employees
+    cardHtml.push(employees
         .filter(employee => employee.getRole() === "Intern")
         .map(intern => generateInternCard(intern))
         .join("")
     );
 
-    return html.join("")
+    return cardHtml.join("")
 }
 
 const generateBaseHTML = employees => {
@@ -60,6 +68,12 @@ const generateBaseHTML = employees => {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="./stylesheet.css">
     <title>My Team Roster</title>
 </head>
