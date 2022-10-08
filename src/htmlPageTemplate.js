@@ -52,7 +52,7 @@ const generateEmployeeCards = employees => {
     return html.join("")
 }
 
-module.exports = employees => {
+const generateBaseHTML = employees => {
     return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -60,7 +60,7 @@ module.exports = employees => {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-    <link rel="stylesheet" src="../dist/stylesheet.css">
+    <link rel="stylesheet" href="./stylesheet.css">
     <title>My Team Roster</title>
 </head>
 <body>
@@ -80,6 +80,6 @@ module.exports = employees => {
 </body>
 </html>
     `
-    };
+};
 
-    // module.exports = generateBaseHTML
+ module.exports = generateBaseHTML

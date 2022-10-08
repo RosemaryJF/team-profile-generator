@@ -66,7 +66,7 @@ const addToTeamPrompt = () => {
                 internQuestionsFunc();
             } else {
                 console.log(employeesArr);
-                generateHTML();
+                generateHTML(employeesArr);
             };
         });
 };
@@ -92,4 +92,5 @@ const generateHTML = (employees) => {
 };
 
 init()
-// module.exports = employeesArr
+
+module.exports = employeesArr
