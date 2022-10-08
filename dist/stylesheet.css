@@ -1,31 +1,42 @@
 :root {
     --mainThemeColor: #343F56;
     --secondaryThemeColor: #387C6D;
-    --thirdThemeColor: #E9896A;
     --fontcolor: #F8F5F1;
 }
 
 .hero {
     background-color: var(--mainThemeColor);
     color: var(--fontcolor);
-    margin-bottom: 10%;
+    margin-bottom: 5%;
 }
 
-.is-child {
+.tile .is-child {
+    margin-left: 8%!important;
+    margin-right: -10%!important;
+    justify-items: center;
     align-items: center;
-    justify-content: center;
 }
+
+
 
 h2,
-h3,
-i {
-    padding: 5%;
+h3 {
+    padding-top: 2.5%;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 2.5%;
     background-color: var(--secondaryThemeColor);
     color: var(--fontcolor);
     font-weight: bold;
+    width: 20rem;
+}
+
+i {
+    padding-right: 10px;
 }
 
 p {
     padding: 2.5%;
     background-color: var(--fontcolor);
+    width: 20rem;
 }
