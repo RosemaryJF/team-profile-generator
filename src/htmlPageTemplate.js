@@ -1,61 +1,58 @@
-const generateManagerCard = (Manager) => {
-    return `
+// const Employee = require("../lib/Employee")
+
+const generateEmployeeCards = employees => {
+
+    const generateManagerCard = (managerAnswers) => {
+        return `
     <div class="tile is-child is-4 has-text-centered employeeCard">
-        <h2>${Manager.getName()}</h2>
-        <h3>${Manager.getRole()}</h3>
-        <p>${Manager.getID()}</p>
-        <p>${Manager.getEmail()}</p>
-        <p>${Manager.getOfficeNumber()}</p>
+        <h2>${managerAnswers.getName()}</h2>
+        <h3>${managerAnswers.getRole()}</h3>
+        <p>${managerAnswers.getID()}</p>
+        <p>${managerAnswers.getEmail()}</p>
+        <p>${managerAnswers.getOfficeNumber()}</p>
     </div>
     `
-}
-
-const generateEngineerCard = engineer => {
-    return `
-        <div class="tile is-child is-4 has-text-centered">
-            ${engineer.getName()}
-        </div>
-        `
-}
-
-const generateInternCard = intern => {
-    return `
-        <div class="tile is-child is-4 has-text-centered">
-            ${intern.getName()}
-        </div>
-        `
-}
-
-generateEmployeeCards = (employeesArr) => {
-   const employeeCardArr = []
-    for (let i = 0; i < employeesArr.length; i++) {
-        const employee = employeesArr[i];
-        const role = employee.getRole()
-        if (role === 'Manager') {
-            const managerCard = generateManagerCard(employee);
-
-            employeeCardArr.push(managerCard);
-        }
-        if (role === 'Engineer') {
-            const engineerCard = generateEngineerCard(employee);
-
-            employeeCardArr.push(engineerCard);
-        }
-        if (role === 'Intern') {
-            const internCard = generateInternCard(employee);
-
-            employeeCardArr.push(internCard);
-        }
     }
 
-    employeeCardArr.join('')
-    
-    const generateTeam = generateTeamPage(employeeCardArr); 
-    return generateTeam;
+    const generateEngineerCard = engineerAnswers => {
+        return `
+        <div class="tile is-child is-4 has-text-centered">
+           <h2>${engineerAnswers.getName()}</h2>
+        </div>
+        `
+    }
+
+    const generateInternCard = internAnswers => {
+        return `
+        <div class="tile is-child is-4 has-text-centered">
+        <h2>${internAnswers.getName()}</h2>
+        </div>
+        `
+    }
+
+    const html = [];
+
+    html.push(employees
+        .filter(employee => employee.getRole() === "Manager")
+        .map(manager => generateManagerCard(manager))
+    );
+
+    html.push(employees
+        .filter(employee => employee.getRole() === "Engineer")
+        .map(engineer => generateEngineerCard(engineer))
+        .join("")
+    );
+
+    html.push(employees
+        .filter(employee => employee.getRole() === "Intern")
+        .map(intern => generateInternCard(intern))
+        .join("")
+    );
+
+    return html.join("")
 }
 
-
-const generateBaseHTML = employeeCardArr => {
+module.exports = employees => {
     return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -77,12 +74,12 @@ const generateBaseHTML = employeeCardArr => {
 
     <div class="tile is-ancestor">
         <div class="tile is-parent is-12">
-        ${employeeCardArr}
+        ${generateEmployeeCards(employees)}
         </div>
     </div>
 </body>
 </html>
     `
-};
+    };
 
-module.exports = generateBaseHTML
+    // module.exports = generateBaseHTML

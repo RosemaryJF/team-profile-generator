@@ -18,12 +18,13 @@ const init = () => { managerQuestionsFunc() }
 const managerQuestionsFunc = () => {
     inquirer.prompt(managerQuestions)
         .then((answers) => {
-            const manager = new Manager(
+            answers = new Manager(
                 answers.managerName,
                 answers.managerId,
                 answers.managerEmail,
                 answers.managerOfficeNumber)
-            employeesArr.push(manager);
+            employeesArr.push(answers);
+            console.log("The manager has been added!")
             return addToTeamPrompt();
         });
 };
@@ -31,12 +32,13 @@ const managerQuestionsFunc = () => {
 const engineerQuestionsFunc = () => {
     inquirer.prompt(engineerQuestions)
         .then((answers) => {
-            const engineer = new Engineer(
+            answers = new Engineer(
                 answers.engineerName,
                 answers.engineerid,
                 answers.engineerEmail,
                 answers.engineerGithub)
-            employeesArr.push(engineer);
+            employeesArr.push(answers);
+            console.log("You added an Engineer!")
             return addToTeamPrompt();
         });
 };
@@ -44,12 +46,13 @@ const engineerQuestionsFunc = () => {
 const internQuestionsFunc = () => {
     inquirer.prompt(internQuestions)
         .then((answers) => {
-            const intern = new Intern(
+            answers = new Intern(
                 answers.internName,
                 answers.internId,
                 answers.internEmail,
                 answers.internSchool)
-            employeesArr.push(intern);
+            employeesArr.push(answers);
+            console.log("You added an intern!")
             return addToTeamPrompt();
         });
 };
@@ -58,10 +61,8 @@ const addToTeamPrompt = () => {
     inquirer.prompt(employeePrompt)
         .then(answer => {
             if (answer.employeeType === "Engineer") {
-                console.log("You added an Engineer!")
                 engineerQuestionsFunc();
             } else if (answer.employeeType === "Intern") {
-                console.log("You added an intern!")
                 internQuestionsFunc();
             } else {
                 console.log(employeesArr);
@@ -83,12 +84,12 @@ const employeePrompt = [
     },
 ];
 
-const generateHTML = (employeesArr) => {
-    let htmlFile = htmlTemplate(employeesArr)
+const generateHTML = (employees) => {
+    let htmlFile = htmlTemplate(employees)
     fs.writeFile("./dist/index.html", htmlFile, "UTF-8", (err) =>
         err ? console.error(err) : console.log("Congrats! Your team HTML page has been created!")
     )
 };
 
 init()
-module.exports = employeesArr
+// module.exports = employeesArr
