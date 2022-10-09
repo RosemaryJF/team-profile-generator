@@ -18,8 +18,8 @@ In addition to this I wrote tests for this application, the first of which I've 
 - [Installation](#installation)
 - [Usage](#usage)
 - [Features](#features)
-- [Credits](#credits)
 - [License](#license)
+- [Credits](#credits)
 
 ---
 
@@ -35,15 +35,18 @@ Once the user has run `npm i`, they will have the required packages (inquirer an
 
 ## Usage
 
-Open index.js in the integrated terminal. Run node index.js
+Open index.js in the integrated terminal. 
+
+To run the tests simpley enter `npm run test` in the console.
+
+Once all test have passed you can run the application with the commane `node index.js`.
 
 The console will then log the manager questions via inqurier. The user answers each question and then will choose what team member they would like add next. 
 The next questions run will depend on what employee type the user has selected to add to the team. As the user finishes each round of questions their answers are stored as data.
 
-Once the user has finished building their team through the console the can choose the following option: "
-Once complete the new README file will appear on the side bar. The user is then free to edit the README as they wish and move it to where it is needed.
+Once the user has finished building their team through the console they can choose the following option: "I do not want to add anymore employees".
 
-I would advise using this application to generate the README and then cutting it into the applicaple project/application for it, this will minimise unnessacry packages on your project.
+When this option is selected the application runs the `generateHTML` function which pulls on the `generateBaseHtml` function/data inside the `template.js` file. A index.html is generated dynamically and added to the dist folder. Each employee has a card generated in the HTML file which displays the information that has been entered.
 
 The below link will take you through a walk through video of the application and it's functionality:
 
@@ -53,7 +56,7 @@ The below link will take you through a walk through video of the application and
 
 ## Features
 
-A license badge is displayed to quickly provide a reference point at the top of the README. This is only generated if a license is chosen. The License section of the README will also only generate if a license is chosen. Otherwise it will render an empty string.
+My favourite feature (apart from the fact this whole application is kinda a feature...) is the small icon that generates beside each employee type role. This helps the user quickly identify who is what in their team without having to read.
 
 ---
 
