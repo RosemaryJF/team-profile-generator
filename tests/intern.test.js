@@ -1,4 +1,4 @@
-// const Employee = require('../lib/Employee');
+// Test to ensure all intern functions run and return information
 const Intern = require('../lib/Intern');
 
 describe('Intern class', () => {

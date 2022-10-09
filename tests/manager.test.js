@@ -1,4 +1,4 @@
-// const Employee = require('../lib/employee');
+// Test to ensure all manager functions run and return information
 const Manager = require("../lib/Manager");
 
 describe('Manager class', () => {

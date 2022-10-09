@@ -1,3 +1,4 @@
+// Test to ensure all employee functions run and return information
 const Employee = require('../lib/Employee.js')
 
 describe('Employee class', () => {
@@ -17,14 +18,4 @@ describe('Employee class', () => {
         expect(employee.getEmail()).toEqual(employee.email);
         expect(employee.getRole()).toEqual('Employee');
     });
-
-    // it('Should throw an error if not provided an email in the correct format')
-    //     const err = new Error(
-    //         'Information input in an invalid format'
-    //     );
-    //     const cb = () => {
-    //         const employee = new Employee();
-    //         employee.getEmail();
-    //     }
-    //     expect(cb).toThrowError(err);
 })

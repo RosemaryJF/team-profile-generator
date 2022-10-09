@@ -1,3 +1,4 @@
+// Test to ensure all engineer functions run and return information
 const Engineer = require('../lib/Engineer');
 
 describe('Engineer class', () => {
