@@ -1,6 +1,6 @@
 # team-profile-generator
 
-# CLI Team Profile Generator
+# CL Team Profile Generator
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
@@ -50,7 +50,7 @@ When this option is selected the application runs the `generateHTML` function wh
 
 The below link will take you through a walk through video of the application and it's functionality:
 
-![Video Link](./assets/images/console-example.jpg)
+[Watch the walkthrough video by clicking this link](https://drive.google.com/file/d/1Ta3VUYG-VuuZVGUUX1N7mAtjrm6FrXwe/view)
 
 ---
 
